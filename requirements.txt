@@ -1,4 +1,6 @@
 scikit-learn
 pandas
 seaborn
+numpy
+matplotlib
 -e .
