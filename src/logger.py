@@ -13,5 +13,3 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
-if __name__=='__main__':
-    logging.info('Logging has started...')
