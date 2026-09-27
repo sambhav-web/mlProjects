@@ -5,6 +5,8 @@ import os
 import pandas as pd
 import sys
 from sklearn.model_selection import train_test_split
+from src.components.data_transform import DataTransformerConfig
+from src.components.data_transform import DataTransformer
 
 @dataclass
 class DataIngestionConfig:
@@ -37,4 +39,6 @@ class DataIngestion:
 
 if __name__=="__main__":
     object=DataIngestion()
-    object.initiate_data_ingestion()
+    train_data,test_data=object.initiate_data_ingestion()
+    data_transformer=DataTransformer()
+    data_transformer.initiate_data_transformer(train_data,test_data)
