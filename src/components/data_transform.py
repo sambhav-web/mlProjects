@@ -50,8 +50,9 @@ class DataTransformer:
         try:
             train_df=pd.read_csv(train_path)
             test_df=pd.read_csv(test_path)
-            logging.info('Read the train test Dataset')
             target_column='math_score'
+            logging.info('Read the train and test Data successfully')
+            logging.info('Obtaining preprocessing object')
             preprocessor_obj=self.get_transformer_object()
 
             input_feature_train_df=train_df.drop(columns=['math_score'])
@@ -74,8 +75,7 @@ class DataTransformer:
 
             return(
                 train_array,
-                test_array,
-                self.data_transformation_config.preprocessor_obj_file_path
+                test_array
             )
         except Exception as e:
             raise CustomException(e,sys)
