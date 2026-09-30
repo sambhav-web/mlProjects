@@ -42,7 +42,55 @@ class ModelTrainer:
                 'XgBoost':XGBRegressor(),
                 'SVR':SVR()
             }
-            model_report:dict=evaluate_model(X_train,Y_train,X_test,Y_test,models)
+            params={
+                'Linear Regression':{
+                    'n_jobs':[2,3,4,5]
+                },
+                'RandomForest':{
+                    'n_estimators':[100,200,300,500,1000],
+                    'criterion':['squared_error', 'absolute_error', 'friedman_mse', 'poisson'],
+                    'max_depth':[2,3,4,5,6],
+                    'max_features':['sqrt','log2',5,10,2,3]
+                },
+                'Decision Tree':{
+                    'criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+                    'splitter': ['best', 'random'],
+                    'max_depth':[100,200,300,500,1000],
+                    'max_features':['auto', 'sqrt', 'log2']
+                },
+                'AdaBoostRegressor':{
+                    'n_estimators':[100,200,300,50,500],
+                    'loss': ['linear', 'square', 'exponential']
+                },
+                'Gradient Booster':{
+                    'loss':['squared_error', 'absolute_error', 'huber', 'quantile'],
+                    'n_estimators': [100,200,300,500,1000],
+                    'criterion': ['friedman_mse', 'squared_error'],
+                    'max_depth':[2,3,4,5,6,7]
+                },
+                'KNR':{
+                    'n_neighbors': [5,7,9,11,3],
+                    'weights': ['uniform', 'distance'],
+                    'algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute']
+                },
+                'CatBoost':{
+                    'iterations':[100,30,40,50],      
+                    'learning_rate':[0.1,0.01,0.001],   
+                    'depth':[2,3,4,5,6]              
+                },
+                'XgBoost':{
+                    'max_depth':[2,3,5,4],
+                    'learning_rate':[0.1,0.01,0.001],
+                    'n_estimators':[100,200,300,500],
+                },
+                'SVR':{
+                    'kernel': ['linear', 'poly', 'rbf', 'sigmoid', 'precomputed'],
+                    'gamma': ['scale', 'auto',0.1,1],
+                    'C': [0.1,1,10],
+                    'epsilon':[0.1,0.2,0.3,0.05,0.01]
+                }
+            }
+            model_report:dict=evaluate_model(X_train,Y_train,X_test,Y_test,models,params)
 
             # to get the best model with best score
             best_model_name=''
