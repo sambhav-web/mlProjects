@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student Test Performance Prediction</h1>
+    <form action="{{ url_for('predict_datapoint') }}" method="post">
+        <label for="selectgender">Select your Gender : </label>
+        <select name="gender" id="selectgender">
+            <option value="">Select your gender</option>
+            <option value="male">male</option>
+            <option value="female">female</option>
+        </select><br><br>
+
+        <label for="selectrace">Select your  : </label>
+        <select name="race_ethnicity" id="selectrace">
+            <option value="">Select your race_ethnicity</option>
+            <option value="group A">group A</option>
+            <option value="group B">group B</option>
+            <option value="group C">group C</option>
+            <option value="group D">group D</option>
+            <option value="group E">group E</option>
+        </select><br><br>
+
+        <label for="select_parental_level_of_education">Select your parental_level_of_education : </label>
+        <select name="parental_level_of_education" id="select_parental_level_of_education">
+            <option value="">Select your parental_level_of_education</option>
+            <option value="bachelor's degree">bachelor's degree</option>
+            <option value="some college">some college</option>
+            <option value="master's degree">master's degree</option>
+            <option value="associate's degree">associate's degree</option>
+            <option value="high school">high school</option>
+            <option value="some high school">some high school</option>
+        </select><br><br>
+
+        <label for="selectlunch">Select your Lunch : </label>
+        <select name="lunch" id="selectlunch">
+            <option value="">Select your Lunch</option>
+            <option value="standard">standard</option>
+            <option value="free/reduced">free/reduced</option>
+        </select><br><br>
+
+        <label for="selectcourse">Select your test_preparation_course : </label>
+        <select name="test_preparation_course" id="selectcourse">
+            <option value="">Select your test_preparation_course</option>
+            <option value="none">none</option>
+            <option value="completed">completed</option>
+        </select><br><br>
+
+        <label for="selectreadscore">Select your Reading Score : </label>
+        <input type="number" id="selectreadscore" name="reading_score"><br><br>
+
+        <label for="selectwritescore">Select your Writing Score : </label>
+        <input type="number" id="selectwritescore" name="writing_score"><br><br>
+
+        <button type="submit" value="Submit">Predict math score</button>
+
+        <h2>
+            The Prediction of the model is {{ result }}
+        </h2>
+    </form>
+</body>
+</html>
